@@ -1,4 +1,6 @@
 .card-wrapper {
+  max-width: 860px;
+  margin: 30px auto;
   display: flex;
   flex-flow: row wrap;
 }
@@ -6,13 +8,19 @@
 .card {
   margin: 10px;
   flex: 0 0 150px;
-  height: auto;
+  height: 150px;
+  box-sizing: border-box;
   border: 2px solid grey;
   padding: 20px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .image {
   width: 100px;
   height: auto;
+}
+
+.hidden {
+  display: none;
 }

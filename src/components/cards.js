@@ -2,13 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { saveCards } from "../redux/actions";
 import "./cards.css";
+import classNames from "classnames";
 
 class Cards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: props.cards
+      cards: props.cards,
+      cardFlippedOver: null
     };
+    this.timerIsActive = false;
   }
 
   componentDidUpdate(prevProps) {
@@ -18,7 +21,25 @@ class Cards extends React.Component {
   }
 
   onCardSelect(card) {
+    if (card.clicked === 1 || this.timerIsActive) {
+      return;
+    }
     card.clicked++;
+    if (this.state.cardFlippedOver) {
+      if (this.state.cardFlippedOver.image !== card.image) {
+        this.timerIsActive = true;
+        setTimeout(() => {
+          card.clicked = 0;
+          const { cardFlippedOver } = this.state;
+          cardFlippedOver.clicked = 0;
+          this.setState({ cardFlippedOver: null });
+          this.props.saveCards(this.state.cards);
+          this.timerIsActive = false;
+        }, 2000);
+      }
+    } else {
+      this.setState({ cardFlippedOver: card });
+    }
     this.props.saveCards(this.state.cards);
   }
 
@@ -29,7 +50,13 @@ class Cards extends React.Component {
         key={card.key}
         onClick={this.onCardSelect.bind(this, card)}
       >
-        <img className="image" src={card.image} alt="dsfs" />
+        <img
+          className={classNames("image", {
+            hidden: !card.clicked
+          })}
+          src={card.image}
+          alt="dsfs"
+        />
       </div>
     ));
     return <div className="card-wrapper">{items}</div>;
