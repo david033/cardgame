@@ -1,21 +1,5 @@
 const initialState = {
-  cards: [
-    {
-      key: "card1",
-      image: "path",
-      clicked: 0
-    },
-    {
-      key: "card2",
-      image: "path1",
-      clicked: 0
-    },
-    {
-      key: "card3",
-      image: "path2",
-      clicked: 0
-    }
-  ]
+  cards: []
 };
 
 export const cardsStore = (state = initialState, action) => {

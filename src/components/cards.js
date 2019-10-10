@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { saveCards } from "../redux/actions";
+import "./cards.css";
 
 class Cards extends React.Component {
   constructor(props) {
@@ -10,6 +11,12 @@ class Cards extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.cards !== this.state.cards) {
+      this.setState({ cards: this.props.cards });
+    }
+  }
+
   onCardSelect(card) {
     card.clicked++;
     this.props.saveCards(this.state.cards);
@@ -17,16 +24,15 @@ class Cards extends React.Component {
 
   render() {
     const items = this.state.cards.map(card => (
-      <div key={card.key} onClick={this.onCardSelect.bind(this, card)}>
-        {card.image}
+      <div
+        className="card"
+        key={card.key}
+        onClick={this.onCardSelect.bind(this, card)}
+      >
+        <img className="image" src={card.image} alt="dsfs" />
       </div>
     ));
-    return (
-      <div>
-        {"Cards Component"}
-        {items}
-      </div>
-    );
+    return <div className="card-wrapper">{items}</div>;
   }
 }
 

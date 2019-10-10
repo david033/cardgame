@@ -1,0 +1,18 @@
+.card-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card {
+  margin: 10px;
+  flex: 0 0 150px;
+  height: auto;
+  border: 2px solid grey;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.image {
+  width: 100px;
+  height: auto;
+}
