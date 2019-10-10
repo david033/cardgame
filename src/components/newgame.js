@@ -33,8 +33,15 @@ class Newgame extends React.Component {
       ts,
       webpack
     ];
-    const cards = images.map(path => ({
-      key: path,
+    const selectedImages = images.splice(0, this.state.numberOfCards);
+    const pairs = [...selectedImages, ...selectedImages];
+    const randomPairs = [];
+    while (pairs.length) {
+      const index = Math.floor(Math.random() * pairs.length);
+      randomPairs.push(pairs.splice(index, 1)[0]);
+    }
+    const cards = randomPairs.map((path, index) => ({
+      key: `id_${index}`,
       image: path,
       clicked: 0
     }));

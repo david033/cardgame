@@ -36,6 +36,8 @@ class Cards extends React.Component {
           this.props.saveCards(this.state.cards);
           this.timerIsActive = false;
         }, 2000);
+      } else {
+        this.setState({ cardFlippedOver: null });
       }
     } else {
       this.setState({ cardFlippedOver: card });
