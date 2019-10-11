@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { saveCards } from "../redux/actions";
+import "./button.css";
 import "./cards.css";
 import classNames from "classnames";
 
@@ -61,7 +62,18 @@ class Cards extends React.Component {
         />
       </div>
     ));
-    return <div className="card-wrapper">{items}</div>;
+    return (
+      <div>
+        <div className="scores">
+          <div className="box tries align-left">Current tries: 10</div>
+          <div className="box best align-center">Best: 4</div>
+          <div className="box restart align-right">
+            <button class="btn restart-btn">RESTART</button>
+          </div>
+        </div>
+        <div className="card-wrapper">{items}</div>
+      </div>
+    );
   }
 }
 

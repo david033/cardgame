@@ -24,3 +24,33 @@
 .hidden {
   display: none;
 }
+
+.scores {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 20px auto 40px;
+  max-width: 860px;
+}
+
+.box {
+  flex: 1;
+  margin: 10px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.restart-btn {
+  border: 2px solid grey;
+  color: #000;
+  background-color: #fff;
+}

@@ -10,6 +10,8 @@ import redux from "../cards/redux.png";
 import sass from "../cards/sass.png";
 import ts from "../cards/ts.png";
 import webpack from "../cards/webpack.png";
+import "./button.css";
+import "./newgame.css";
 
 class Newgame extends React.Component {
   constructor(props) {
@@ -50,15 +52,22 @@ class Newgame extends React.Component {
 
   render() {
     return (
-      <div>
-        {"New game"}
-        <div>
+      <div className="page-header">
+        <div className="brand"></div>
+        <div className="title">MEMORY GAME</div>
+        <div className="center-block">
           <input
             value={this.state.numberOfCards}
             type="text"
+            className="form-control"
             onChange={this.onCardNumberChanges.bind(this)}
           />
-          <button onClick={this.onNewGame.bind(this)}>New Game</button>
+          <button
+            className="btn newgame-btn"
+            onClick={this.onNewGame.bind(this)}
+          >
+            START NEW GAME
+          </button>
         </div>
       </div>
     );
