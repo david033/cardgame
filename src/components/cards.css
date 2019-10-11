@@ -10,8 +10,13 @@
   flex: 0 0 150px;
   height: 150px;
   box-sizing: border-box;
-  border: 2px solid grey;
+  border: 0;
   padding: 20px;
+  background-color: transparent;
+}
+
+.card-hidden {
+  border: 2px solid grey;
   border-radius: 5px;
   cursor: pointer;
 }

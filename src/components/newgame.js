@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { saveCards } from "../redux/actions";
+import { saveCards, updateNumberOfPairs } from "../redux/actions";
 import angular from "../cards/angular.png";
 import d3 from "../cards/d3.png";
 import jenkins from "../cards/jenkins.png";
@@ -16,11 +16,17 @@ import "./newgame.css";
 class Newgame extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { numberOfCards: 4, cards: props.cards };
+    this.state = { numberOfCards: props.numberOfPairs, cards: props.cards };
   }
 
   onCardNumberChanges(event) {
-    this.setState({ numberOfCards: parseInt(event.target.value, 10) });
+    const numberOfCards = parseInt(event.target.value, 10)
+      ? parseInt(event.target.value, 10)
+      : null;
+    if (numberOfCards) {
+      this.setState({ numberOfCards });
+      this.props.updateNumberOfPairs(numberOfCards);
+    }
   }
 
   onNewGame() {
@@ -57,7 +63,6 @@ class Newgame extends React.Component {
         <div className="title">MEMORY GAME</div>
         <div className="center-block">
           <input
-            value={this.state.numberOfCards}
             type="text"
             className="form-control"
             onChange={this.onCardNumberChanges.bind(this)}
@@ -75,11 +80,11 @@ class Newgame extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { cards } = state.cardsStore;
-  return { cards };
+  const { cards, numberOfPairs } = state.cardsStore;
+  return { cards, numberOfPairs };
 }
 
 export default connect(
   mapStateToProps,
-  { saveCards }
+  { saveCards, updateNumberOfPairs }
 )(Newgame);

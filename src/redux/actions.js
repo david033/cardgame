@@ -6,3 +6,21 @@ export const saveCards = cards => {
     }
   };
 };
+
+export const updateBest = best => {
+  return {
+    type: "UPDATE_BEST",
+    payload: {
+      best
+    }
+  };
+};
+
+export const updateNumberOfPairs = numberOfPairs => {
+  return {
+    type: "UPDATE_PAIRNUMBER",
+    payload: {
+      numberOfPairs
+    }
+  };
+};
