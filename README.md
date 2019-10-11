@@ -1,3 +1,9 @@
+## This project requires yarn package manager
+
+To install Yarn run `npm install -g yarn`.
+Then type `yarn install` to install dependencies.
+You can run this project with `yarn start`.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
